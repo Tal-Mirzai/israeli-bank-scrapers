@@ -206,8 +206,6 @@ export default class OneZeroScraper extends BaseScraper<ScraperSpecificCredentia
       pinCode: '',
     });
 
-    console.log('[DEBUG] getIdToken response:', JSON.stringify(getIdTokenResponse, null, 2));
-
     const {
       resultData: { idToken },
     } = getIdTokenResponse;

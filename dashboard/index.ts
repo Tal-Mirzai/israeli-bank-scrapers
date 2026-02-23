@@ -7,8 +7,14 @@ import { generateDashboardHtml } from './generate-html';
 
 dotenv.config();
 
-const { ONE_ZERO_EMAIL, ONE_ZERO_PASSWORD, ONE_ZERO_OTP_LONG_TERM_TOKEN, ONE_ZERO_PHONE_NUMBER } =
-  process.env;
+const {
+  ONE_ZERO_EMAIL,
+  ONE_ZERO_PASSWORD,
+  ONE_ZERO_OTP_LONG_TERM_TOKEN,
+  ONE_ZERO_PHONE_NUMBER,
+  PERSON1_NAME,
+  PERSON2_NAME,
+} = process.env;
 
 function readLineFromStdin(prompt: string): Promise<string> {
   const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
@@ -80,7 +86,7 @@ async function main() {
   const totalTxns = result.accounts.reduce((n, a) => n + a.txns.length, 0);
   console.log(`✅  Fetched ${totalTxns} transactions across ${result.accounts.length} account(s).`);
 
-  const html = generateDashboardHtml(result.accounts);
+  const html = generateDashboardHtml(result.accounts, PERSON1_NAME, PERSON2_NAME);
   const outputPath = path.join(__dirname, '..', 'dashboard.html');
   fs.writeFileSync(outputPath, html, 'utf-8');
 
