@@ -64,3 +64,6 @@ lib/
 .idea
 .vscode
 .DS_Store
+
+# Generated dashboard (contains personal financial data)
+dashboard.html
